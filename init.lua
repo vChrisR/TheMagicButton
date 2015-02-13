@@ -1,9 +1,12 @@
+ssid = "yourssid"
+password = "yourpassword"
+
 gpio.mode(4, gpio.OUTPUT)
 gpio.write(4,0)
 
 print("set up wifi mode")
 wifi.setmode(wifi.STATION)
-wifi.sta.config("crmobile","Crm0bile")
+wifi.sta.config(ssid,password)
 wifi.sta.connect()
 tmr.alarm(1, 1000, 1, function() 
     if wifi.sta.getip()== nil then 
