@@ -1,5 +1,6 @@
 targetHost = "82.157.195.146"
 targetPort = 3000
+apikey = yourapikey
 
 gpio.mode(3, gpio.INPUT, gpio.PULLUP)
 gpio.mode(4, gpio.OUTPUT)
@@ -19,7 +20,7 @@ gpio.trig(3, "up", function (state)
                     gpio.write(4,1)
                end)
              
-               local httpPost = "POST /magicbutton?apikey=xxr06dalzv HTTP/1.1\r\nHost: "..targetHost.."\r\nConnection: close\r\nContent-Type: application/json\r\nContent-Length: 20\r\n\r\n{\"event\": \"pressed\"}"
+               local httpPost = "POST /magicbutton?apikey="..apikey.." HTTP/1.1\r\nHost: "..targetHost.."\r\nConnection: close\r\nContent-Type: application/json\r\nContent-Length: 20\r\n\r\n{\"event\": \"pressed\"}"
                --print("Posting Message:\r\n------------\r\n"..httpPost.."\r\n----------\r\n")
                sk:connect(targetPort, targetHost)
                sk:send(httpPost)
